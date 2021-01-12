@@ -63,10 +63,10 @@ comment RTL     : "*"
 ### Comments mnemonics
 ```
 comment list:
-    String started with '/'. Exclude this string from vloginit parsing
+    String started with '/' or '//'. This string will be excluded from vloginit parsing
 
 comment RTL:
-    String started with "//". Translated into RTL comment line.
+    String started with '*'. This string will be translated into RTL comment line.
 ```
 
 In case using only default values for all fields possible to leave it blank. But separation symbol '#' must be inserted

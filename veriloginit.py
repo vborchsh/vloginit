@@ -1,4 +1,3 @@
-# encoding: cp1251
 #
 # Project       : Verilog/System Verilog module template generator
 # Author        : Shekhalev Denis (des00), Borchsh Vladislav
@@ -269,4 +268,4 @@ if __name__ == '__main__':
             else :
                 CreateTemplateSV(sys.argv[2])
         except IOError:
-            error("ERROR: Invalid settings filename;")
+            error("ERROR: Invalid filename;")
