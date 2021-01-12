@@ -1,0 +1,18 @@
+%example_module
+
+$pW     # 36 # i #  # 1
+$pA     # 18 # i #  # 1
+?pLOCAL # 22 # i #  # 1
+
+@i # irst     # 1  # L # 1
+* Clock signals
+@i # iclk     # 1  # L # 1
+@i # iclk_ena # 1  # L # 1
+* Data bus signals
+@o # owrena   # 1  # L # 1
+@o # ordena   # 1  # L # 1
+@o # owr_adr  # pA # L # 1
+@o # ord_adr  # pA # L # 1
+@o # odat     # pW # L # 1
+@i # iena     # 1  # L # 1
+@i # idat     # pW # L # 1
