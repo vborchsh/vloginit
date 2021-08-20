@@ -3,11 +3,11 @@
 ## Usage
 Verilog-style generation:
 
-`python veriloginit.py somefile.dat`
+`vloginit index_file.dat`
 
 SystemVerilog-style generation: 
 
-`python veriloginit.py -sv somefile.dat`
+`vloginit -sv index_file.dat`
 
 ### Mnemonics list
 

@@ -6,7 +6,7 @@
 # Contact       : diod2003@list.ru, borchsh.vn@gmail.com
 # Licence       : free for use
 #
-# Workfile      : veriloginit.py
+# Workfile      : main.py
 # Description   : generator module itself
 
 
@@ -14,8 +14,8 @@
 Verilog/SystemVerilog modules template generator
 
 Usage:
-    veriloginit.py index_file.dat
-    veriloginit.py -sv index_file.dat
+    vloginit index_file.dat
+    vloginit -sv index_file.dat
 '''
 
 import string

@@ -12,9 +12,9 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     license ='MIT',
-    url="https://gitlab.com/personal-misc-scripts/vloginit",
+    url="https://gitlab.com/vborshch/vloginit",
     project_urls={
-        "Bug Tracker": "https://gitlab.com/personal-misc-scripts/vloginit/issues",
+        "Bug Tracker": "https://gitlab.com/vborshch/vloginit/issues",
     },
     packages=find_packages(),
     entry_points ={
