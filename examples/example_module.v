@@ -62,18 +62,18 @@ module example_module
   parameter int pA = 18 
 )
 (
-  input  logic          irst     ,
+  irst     ,
   // Clock signals
-  input  logic          iclk     ,
-  input  logic          iclk_ena ,
+  iclk     ,
+  iclk_ena ,
   // Data bus signals
-  output logic          owrena   ,
-  output logic          ordena   ,
-  output logic [pA-1:0] owr_adr  ,
-  output logic [pA-1:0] ord_adr  ,
-  output logic [pW-1:0] odat     ,
-  input  logic          iena     ,
-  input  logic [pW-1:0] idat     
+  owrena   ,
+  ordena   ,
+  owr_adr  ,
+  ord_adr  ,
+  odat     ,
+  iena     ,
+  idat     
 );
 
   //------------------------------------------------------------------------------------------------------
@@ -86,6 +86,18 @@ module example_module
   //
   //------------------------------------------------------------------------------------------------------
 
+  input  logic          irst     ;
+  // Clock signals
+  input  logic          iclk     ;
+  input  logic          iclk_ena ;
+  // Data bus signals
+  output logic          owrena   ;
+  output logic          ordena   ;
+  output logic [pA-1:0] owr_adr  ;
+  output logic [pA-1:0] ord_adr  ;
+  output logic [pW-1:0] odat     ;
+  input  logic          iena     ;
+  input  logic [pW-1:0] idat     ;
 
   //------------------------------------------------------------------------------------------------------
   //
