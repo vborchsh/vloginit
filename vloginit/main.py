@@ -1,6 +1,6 @@
 #
 # Project       : Verilog/System Verilog module template generator
-# Author        : Shekhalev Denis (des00), Borchsh Vladislav
+# Author        : Shekhalev Denis (des00), Borshch Vladislav
 # Revision      : $Revision$
 # Date          : $Date$
 # Contact       : diod2003@list.ru, borchsh.vn@gmail.com
@@ -9,19 +9,18 @@
 # Workfile      : veriloginit.py
 # Description   : generator module itself
 
+
 '''
 Verilog/SystemVerilog modules template generator
 
-Usage :
+Usage:
     veriloginit.py index_file.dat
     veriloginit.py -sv index_file.dat
 '''
 
 import string
-
 import sys
-import vlog
-
+from . import vlog
 
 param_dict = {}
 
@@ -29,6 +28,7 @@ inc_list    = []
 param_list  = []
 lparam_list = []
 port_list   = []
+
 #-----------------------------------------------------------------------------
 #
 #-----------------------------------------------------------------------------
@@ -36,6 +36,7 @@ def error(msg):
     string = 'ERROR : ' + msg
     print >>sys.stderr, string,
     sys.exit(100)
+
 #-----------------------------------------------------------------------------
 #
 #-----------------------------------------------------------------------------
@@ -48,6 +49,7 @@ def GetSymbol (symbol) :
         s = "wrong symbol \"" + str(new_symbol) + "\""
         error(s)
     return new_symbol
+
 #-----------------------------------------------------------------------------
 #
 #-----------------------------------------------------------------------------
@@ -64,6 +66,7 @@ def AssignNotDeclaratedParameter (width, local):
     else:
         param_list.append ([name, value, width, ptype, array, tab])
     param_dict[name] = 1
+
 #-----------------------------------------------------------------------------
 #
 #-----------------------------------------------------------------------------
@@ -175,6 +178,7 @@ def ParseFile (filelist):
             error('unrecognized token ' + token)
 
     return mname
+
 #-----------------------------------------------------------------------------
 #
 #-----------------------------------------------------------------------------
@@ -210,6 +214,7 @@ def CreateTemplateV (filename):
     f = open(filename, "w")
     f.writelines(context.expandtabs(2))
     f.close()
+
 #-----------------------------------------------------------------------------
 #
 #-----------------------------------------------------------------------------
@@ -245,27 +250,32 @@ def CreateTemplateSV (filename):
     f = open(filename, "w")
     f.writelines(context.expandtabs(2))
     f.close()
+
 #-----------------------------------------------------------------------------
 #
 #-----------------------------------------------------------------------------
-if __name__ == '__main__':
-    import sys
-    nargs = len(sys.argv) - 1
-
-    if nargs != 1 and nargs != 2 :
+def vloginit(args):
+    if len(args) != 1 and len(args) != 2 :
         print(__doc__)
         sys.exit(100)
-    elif nargs == 1 and sys.argv[1] == '-sv' :
+    elif len(args) == 1 and sys.argv[1] == '-sv' :
         print(__doc__)
         sys.exit(100)
-    elif nargs == 2 and sys.argv[1] != '-sv' :
+    elif len(args) == 2 and sys.argv[1] != '-sv' :
         print(__doc__)
         sys.exit(100)
     else:
         try:
-            if nargs == 1:
+            if len(args) == 1:
                 CreateTemplateV(sys.argv[1])
             else :
                 CreateTemplateSV(sys.argv[2])
         except IOError:
             error("ERROR: Invalid filename;")
+
+#-----------------------------------------------------------------------------
+#
+#-----------------------------------------------------------------------------
+def main():
+    """Entry point used by the executable"""
+    vloginit(sys.argv[1:])
