@@ -1,8 +1,6 @@
 #
 # Project       : Verilog/System Verilog module template generator
 # Author        : Shekhalev Denis (des00), Borshch Vladislav
-# Revision      : $Revision$
-# Date          : $Date$
 # Contact       : diod2003@list.ru, borchsh.vn@gmail.com
 # Licence       : free for use
 #

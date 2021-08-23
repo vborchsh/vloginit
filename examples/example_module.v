@@ -8,10 +8,8 @@
 
 
   logic          example_module__irst     ;
-  // Clock signals
   logic          example_module__iclk     ;
   logic          example_module__iclk_ena ;
-  // Data bus signals
   logic          example_module__owrena   ;
   logic          example_module__ordena   ;
   logic [pA-1:0] example_module__owr_adr  ;
@@ -30,10 +28,8 @@
   example_module__
   (
     .irst     (example_module__irst          ) ,
-    // Clock signals
     .iclk     (example_module__iclk          ) ,
     .iclk_ena (example_module__iclk_ena      ) ,
-    // Data bus signals
     .owrena   (example_module__owrena        ) ,
     .ordena   (example_module__ordena        ) ,
     .owr_adr  (example_module__owr_adr       ) ,

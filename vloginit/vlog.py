@@ -1,10 +1,7 @@
-# encoding: cp1251
 #
 # Project       : Verilog/System Verilog code generate functions and templates
-# Author        : Shekhalev Denis ( des00 )
-# Revision      : $Revision$
-# Date          : $Date$
-# Contact       : diod2003@list.ru
+# Author        : Shekhalev Denis (des00), Borshch Vladislav
+# Contact       : diod2003@list.ru, borchsh.vn@gmail.com
 # Licence       : free for use
 #
 # Workfile      : vlog.py
@@ -28,6 +25,7 @@ param_list  = []
 lparam_list = []
 signal_list = []
 inc_list    = []
+
 #-----------------------------------------------------------------------------
 #
 #-----------------------------------------------------------------------------
@@ -453,10 +451,6 @@ def PrintPortDeclaration (mname, list):
             context += pin_name + ' ;\n'
         else:
             context += pin_name + ' ' + awidth + ' ;\n'
-
-        if tab:
-            if tab[0] == '*':
-                context += '\t//' + tab[1:] + '\n'
     #
     return context
 
@@ -475,9 +469,6 @@ def PrintPortInstance (mname, list):
         name, tab = elem[0], elem[5]
         pin_name = mname + '__' + name
         context += '\t\t.' + name + ' (' + pin_name +'      )' + ' ,\n'
-        if tab:
-            if tab[0] == '*':
-                context += '\t\t//' + tab[1:] + '\n'
     # cut off last symbol ',\n'
     context = context[:-2] + '\n\t);\n'
     return context
@@ -567,10 +558,6 @@ def PrintParamDeclaration (mname, list):
         else:
             context += awidth + ' = ' + value + ';\n'
 
-        if tab:
-            if tab[0] == '*':
-                context += '\t//' + tab[1:] + '\n'
-
     return context
 
 #-----------------------------------------------------------------------------
@@ -587,9 +574,6 @@ def PrintParamInstance  (list):
     for elem in list:
         name, value, tab = elem[0], elem[0], elem[5]
         context += '\t\t. ' + name + '    (' + str(value) +'      )' + ' ,\n'
-
-        if tab == '*':
-            context += '\t\t//\n'
     # cut off last symbol ',\n'
     context = context[:-2] + '\n\t)\n'
     return context
@@ -670,7 +654,7 @@ def PrintModuleInstanceCode (mname, param_list, port_list):
     # end
     context += '*/ \n'
     return context
-    
+
 #-----------------------------------------------------------------------------
 #
 #-----------------------------------------------------------------------------
