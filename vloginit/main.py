@@ -253,18 +253,19 @@ def CreateTemplateSV (filename):
 #
 #-----------------------------------------------------------------------------
 def vloginit(args):
-    if len(args) != 1 and len(args) != 2 :
+    nargs = len(args)
+    if nargs != 1 and nargs != 2 :
         print(__doc__)
         sys.exit(100)
-    elif len(args) == 1 and sys.argv[1] == '-sv' :
+    elif nargs == 1 and sys.argv[1] == '-sv' :
         print(__doc__)
         sys.exit(100)
-    elif len(args) == 2 and sys.argv[1] != '-sv' :
+    elif nargs == 2 and sys.argv[1] != '-sv' :
         print(__doc__)
         sys.exit(100)
     else:
         try:
-            if len(args) == 1:
+            if nargs == 1:
                 CreateTemplateV(sys.argv[1])
             else :
                 CreateTemplateSV(sys.argv[2])
