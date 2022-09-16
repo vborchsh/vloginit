@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="vloginit",
-    version="0.0.2",
+    version="0.0.2dev",
     author="Vladislav Borshch, Shekhalev Denis",
     author_email="borchsh.vn@mail.com, diod2003@list.ru",
     description="Simple script for verilog/systemverilog module templates generation",

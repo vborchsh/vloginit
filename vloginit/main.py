@@ -180,9 +180,9 @@ def ParseFile (filelist):
 #-----------------------------------------------------------------------------
 #
 #-----------------------------------------------------------------------------
-def CreateTemplateV (filename):
+def CreateTemplate(filename, sv_mode):
     '''
-    function to generate module template in pure verilog
+    function to generate module template
     '''
     # read file
     f = open(filename,"r")
@@ -194,11 +194,11 @@ def CreateTemplateV (filename):
     _param_list     = vlog.ParseParams( param_list)
     _lparam_list    = vlog.ParseParams(lparam_list)
     _port_list      = vlog.ParsePorts ( port_list )
-    # generate inlclude files
+    # generate include files
     header_info     = vlog.PrintIncludeFiles(inc_list)
     # generate module
-    context  = vlog.PrintModuleInstanceCode(mname, _param_list, _port_list);
-    context += vlog.PrintModuleDeclarationCode(mname, _param_list, _lparam_list, _port_list, False);
+    context  = vlog.PrintModuleInstanceCode(mname, _param_list, _port_list)
+    context += vlog.PrintModuleDeclarationCode(mname, _param_list, _lparam_list, _port_list, sv_mode)
     # addittion fields
     args = {}
     args['header_info'] = header_info
@@ -208,46 +208,14 @@ def CreateTemplateV (filename):
     #
     context = context % args
     # write to file
-    filename = mname + '.v'
+    if sv_mode:
+        filename = mname + '.sv'
+    else:
+        filename = mname + '.v'
     f = open(filename, "w")
     f.writelines(context.expandtabs(2))
     f.close()
 
-#-----------------------------------------------------------------------------
-#
-#-----------------------------------------------------------------------------
-def CreateTemplateSV (filename):
-    '''
-    function to generate module template in system verilog
-    '''
-    # read file
-    f = open(filename,"r")
-    lines = f.readlines()
-    f.close()
-    # parse file
-    mname = ParseFile(lines)
-    # prepare parameters
-    _param_list     = vlog.ParseParams( param_list)
-    _lparam_list    = vlog.ParseParams(lparam_list)
-    _port_list      = vlog.ParsePorts ( port_list )
-    # generate inlclude files
-    header_info     = vlog.PrintIncludeFiles(inc_list)
-    # generate module
-    context  = vlog.PrintModuleInstanceCode(mname, _param_list, _port_list);
-    context += vlog.PrintModuleDeclarationCode(mname, _param_list, _lparam_list, _port_list, True);
-    # addittion fields
-    args = {}
-    args['header_info'] = header_info
-    args['inst_info']   = ''
-    args['signal']      = ''
-    args['process']     = ''
-    #
-    context = context % args
-    # write to file
-    filename = mname + '.sv'
-    f = open(filename, "w")
-    f.writelines(context.expandtabs(2))
-    f.close()
 
 #-----------------------------------------------------------------------------
 #
@@ -266,11 +234,16 @@ def vloginit(args):
     else:
         try:
             if nargs == 1:
-                CreateTemplateV(sys.argv[1])
-            else :
-                CreateTemplateSV(sys.argv[2])
-        except IOError:
-            error("ERROR: Invalid filename;")
+                sv_mode = False
+                filename = sys.argv[1]
+            else:
+                sv_mode = True
+                filename = sys.argv[2]
+
+            CreateTemplate(filename, sv_mode)
+
+        except Exception as e:
+            error("ERROR: unknown error:" + str(e))
 
 #-----------------------------------------------------------------------------
 #
