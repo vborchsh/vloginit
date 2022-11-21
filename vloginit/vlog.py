@@ -94,7 +94,7 @@ def GetNibleWidth (num):
 #-----------------------------------------------------------------------------
 def GetByteWidth (num):
     '''
-    function to get amount of valid bytes in the world
+    function to get amount of valid bytes in the word
     '''
     if num <= 0:
         return 0
