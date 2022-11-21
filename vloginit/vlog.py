@@ -623,8 +623,6 @@ def PrintModuleInstanceCode (mname, param_list, port_list):
     '''
     # start
     context = '/*\n'
-    # null
-    context += '\n'
     # insert addidition info label
     context += '%(inst_info)s\n'
     # null
@@ -632,11 +630,11 @@ def PrintModuleInstanceCode (mname, param_list, port_list):
     # param declaration
     context += PrintParamDeclaration(mname, param_list)
     # null
-    context += '\n\n\n'
+    context += '\n'
     # port declaration
     context += PrintPortDeclaration(mname, port_list)
     # null
-    context += '\n\n\n'
+    context += '\n'
     # module name
     context += '\t' + mname + '\n'
     # parameter of instance
@@ -646,13 +644,13 @@ def PrintModuleInstanceCode (mname, param_list, port_list):
     # port map
     context += PrintPortInstance(mname, port_list)
     # null
-    context += '\n\n'
+    context += '\n'
     # assigns to input
     context += PrintPortAssign(mname, port_list)
     # null
-    context += '\n\n\n'
+    context += '\n'
     # end
-    context += '*/ \n'
+    context += '*/\n'
     return context
 
 #-----------------------------------------------------------------------------
