@@ -8,13 +8,13 @@ setup(
     version="0.0.3",
     author="Vladislav Borshch, Shekhalev Denis",
     author_email="borchsh.vn@mail.com, diod2003@list.ru",
-    description="Simple script for verilog/systemverilog module templates generation",
+    description="Simple script for verilog/systemverilog modules templates generation",
     long_description=long_description,
     long_description_content_type="text/markdown",
     license ='MIT',
-    url="https://gitlab.com/vborshch/vloginit",
+    url="https://github.com/vborchsh/vloginit",
     project_urls={
-        "Bug Tracker": "https://gitlab.com/vborshch/vloginit/issues",
+        "Bug Tracker": "https://github.com/vborchsh/vloginit/issues",
     },
     packages=find_packages(),
     entry_points ={
