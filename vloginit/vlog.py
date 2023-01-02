@@ -640,7 +640,7 @@ def PrintModuleInstanceCode (mname, param_list, port_list):
     # parameter of instance
     context += PrintParamInstance(param_list)
     # instance name
-    context += '\t' + mname + '__\n'
+    context += '\t' + mname + '\n'
     # port map
     context += PrintPortInstance(mname, port_list)
     # null
